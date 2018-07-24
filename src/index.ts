@@ -4,7 +4,7 @@ interface SerializerOptions {
   exclude?: string[];
 }
 
-interface SerializableInstance extends Instance<any> {
+export interface SerializableInstance extends Instance<any> {
   serializerAttributes(): {
     [key: string]: any;
   };
@@ -44,6 +44,7 @@ export class Serializer<T extends SerializableInstance> {
     return data;
   }
 
+  // TODO: Is this even accessible anymore?
   public get length() {
     let results = 1;
 
