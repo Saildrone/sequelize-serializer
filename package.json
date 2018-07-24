@@ -5,9 +5,11 @@
   "main": "dist/index.js",
   "scripts": {
     "build": "tsc",
-    "prepublish": "npm run build",
+    "lint": "tslint -c tslint.json '{src,test}/**/*.ts'",
+    "prepublishOnly": "npm test",
     "pretest": "npm run build",
-    "test": "NODE_ENV=test lab"
+    "test": "NODE_ENV=test lab",
+    "posttest": "npm run lint"
   },
   "author": "Todd Bealmear <todd@saildrone.com>",
   "license": "ISC",
@@ -22,6 +24,7 @@
     "lab-transform-typescript": "^3.0.1",
     "sequelize": "^4.38.0",
     "sqlite3": "^4.0.2",
+    "tslint": "^5.11.0",
     "typescript": "^2.9.2"
   }
 }

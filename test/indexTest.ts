@@ -9,7 +9,7 @@ const {
   it
 } = exports.lab = Lab.script();
 
-import { SerializableInstance, Serializer, serialize } from '../src';
+import { SerializableInstance, serialize, Serializer } from '../src';
 
 const sequelize = new Sequelize({
   dialect: 'sqlite',
@@ -30,7 +30,7 @@ NullModel.prototype.serializerAttributes = function() {
     foo: this.foo,
     baz: this.baz
   };
-}
+};
 
 // TODO: Clean up and reorganize tests once API solidifies
 describe('sequelize-serializer', () => {
