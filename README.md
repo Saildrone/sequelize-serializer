@@ -1,4 +1,4 @@
-# sequelize-serializer
+# sequelize-serializer [![Build Status](https://travis-ci.org/Saildrone/sequelize-serializer.svg?branch=master)](https://travis-ci.org/Saildrone/sequelize-serializer)
 
 An easy-to-use serializer for Sequelize models.
 
