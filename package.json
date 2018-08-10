@@ -19,8 +19,8 @@
   "devDependencies": {
     "@types/code": "^4.0.4",
     "@types/sequelize": "^4.27.24",
-    "code": "^5.2.0",
-    "lab": "^15.5.0",
+    "code": "^4.1.0",
+    "lab": "^14.3.4",
     "lab-transform-typescript": "^3.0.1",
     "sequelize": "^4.38.0",
     "sqlite3": "^4.0.2",
