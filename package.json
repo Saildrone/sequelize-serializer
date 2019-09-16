@@ -2,6 +2,7 @@
   "name": "sequelize-serializer",
   "version": "2.0.1",
   "description": "An easy-to-use Serializer for Sequelize Models",
+  "repository": "https://github.com/saildrone/sequelize-serializer",
   "main": "dist/index.js",
   "scripts": {
     "build": "tsc",
@@ -14,18 +15,19 @@
   "author": "Todd Bealmear <todd@saildrone.com>",
   "license": "MIT",
   "peerDependencies": {
-    "sequelize": "^4.38.0"
+    "sequelize": "^5.18.4"
   },
   "devDependencies": {
+    "@types/bluebird": "^3.5.27",
     "@types/code": "^4.0.4",
-    "@types/sequelize": "^4.27.24",
+    "@types/validator": "^10.11.3",
     "code": "^4.1.0",
     "lab": "^14.3.4",
     "lab-transform-typescript": "^3.0.1",
-    "sequelize": "^4.38.0",
+    "sequelize": "^5.18.4",
     "sqlite3": "^4.0.4",
     "tslint": "^5.11.0",
-    "typescript": "^2.9.2"
+    "typescript": "^3.6.3"
   },
   "dependencies": {
     "lodash": "^4.17.11"

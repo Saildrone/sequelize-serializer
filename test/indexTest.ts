@@ -1,7 +1,7 @@
 import * as Lab from 'lab';
-import Sequelize from 'sequelize';
 
 import { expect } from 'code';
+import { DataTypes, Model, Sequelize } from 'sequelize';
 
 const {
   beforeEach,
@@ -17,20 +17,28 @@ const sequelize = new Sequelize({
   logging: false
 });
 
-const NullModel = sequelize.define('null_models', {
-  foo: Sequelize.STRING,
-  bar: Sequelize.STRING,
-  baz: Sequelize.STRING
-});
-
-NullModel.prototype.serialize = serialize;
-
-NullModel.prototype.serializerAttributes = function() {
-  return {
-    foo: this.foo,
-    baz: this.baz
-  };
+const columns = {
+  foo: DataTypes.STRING,
+  bar: DataTypes.STRING,
+  baz: DataTypes.STRING
 };
+
+class NullModel extends Model {
+  public foo!: string;
+  public bar!: string;
+  public baz!: string;
+
+  public serialize = serialize;
+
+  public serializerAttributes() {
+    return {
+      foo: this.foo,
+      baz: this.baz
+    };
+  }
+}
+
+NullModel.init(columns, { sequelize });
 
 // TODO: Clean up and reorganize tests once API solidifies
 describe('sequelize-serializer', () => {
