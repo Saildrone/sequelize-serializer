@@ -1,15 +1,15 @@
-import { Instance } from 'sequelize';
+import { Model } from 'sequelize';
 
 interface SerializerOptions {
   exclude?: string[];
 }
 
-export interface SerializableInstance extends Instance<any> {
+export interface SerializableInstance extends Model {
+  serialize: typeof serialize;
+
   serializerAttributes(): {
     [key: string]: any;
   };
-
-  serialize(): any;
 }
 
 export class Serializer<T extends SerializableInstance> {
@@ -58,7 +58,7 @@ export class Serializer<T extends SerializableInstance> {
 
 export function serialize(
   this: SerializableInstance,
-  options: SerializerOptions
+  options?: SerializerOptions
 ) {
   return new Serializer(this, options).toJSON();
 }
