@@ -1,6 +1,6 @@
-import * as Lab from 'lab';
+import * as Lab from '@hapi/lab';
 
-import { expect } from 'code';
+import { expect } from '@hapi/code';
 import { DataTypes, Model, Sequelize } from 'sequelize';
 
 const {
@@ -38,38 +38,29 @@ class NullModel extends Model {
   }
 }
 
-NullModel.init(columns, { sequelize });
+NullModel.init(columns, { sequelize, tableName: 'null_models' });
 
 // TODO: Clean up and reorganize tests once API solidifies
 describe('sequelize-serializer', () => {
   let instance: SerializableInstance;
 
-  beforeEach(done => {
-    sequelize.sync({ force: true }).then(() => {
-      NullModel.create({
-        foo: 'Coby', bar: 'da', baz: 'Bear'
-      }).then((i: SerializableInstance) => {
-        instance  = i;
-        done();
-      });
-    });
+  beforeEach(async () => {
+    await sequelize.sync({ force: true });
+
+    instance = await NullModel.create({ foo: 'Coby', bar: 'da', baz: 'Bear' });
   });
 
   describe('serialize', () => {
-    it('returns the properties defined in serializerAttributes', done => {
+    it('returns the properties defined in serializerAttributes', () => {
       expect(instance.serialize()).to.equal({ foo: 'Coby', baz: 'Bear' });
-
-      done();
     });
 
-    it('does not return properties not defined in serializerAttributes', done => {
+    it('does not return properties not defined in serializerAttributes', () => {
       expect(instance.serialize()).to.not.include({ bar: 'da' });
-
-      done();
     });
 
     describe('without serializerAttributes set', () => {
-      it('defaults to return the entire toJSON object', done => {
+      it('defaults to return the entire toJSON object', () => {
         instance.serializerAttributes = undefined;
 
         expect(instance.serialize()).to.include({
@@ -77,37 +68,30 @@ describe('sequelize-serializer', () => {
           bar: 'da',
           baz: 'Bear'
         });
-
-        done();
       });
     });
   });
 
   describe('serializing an array of models', () => {
-    beforeEach(done => {
-      NullModel.create({ foo: 'Lucy', bar: 'Fur', baz: 'Snacks' })
-        .then(() => done());
+    beforeEach(async () => {
+      await NullModel.create({ foo: 'Lucy', bar: 'Fur', baz: 'Snacks' });
     });
 
-    it('returns the properties defined in serializerAttributes for each model', done => {
-      NullModel.findAll().then((models: SerializableInstance[]) => {
-        expect(new Serializer(models).toJSON()).to.equal([
-          { foo: 'Coby', baz: 'Bear' },
-          { foo: 'Lucy', baz: 'Snacks' }
-        ]);
+    it('returns the properties defined in serializerAttributes for each model', async () => {
+      const models = await NullModel.findAll();
 
-        done();
-      });
+      expect(new Serializer(models).toJSON()).to.equal([
+        { foo: 'Coby', baz: 'Bear' },
+        { foo: 'Lucy', baz: 'Snacks' }
+      ]);
     });
   });
 
   describe('excluding properties from serializerAttributes', () => {
-    it('returns the properties defined without those explicitly excluded', done => {
+    it('returns the properties defined without those explicitly excluded', () => {
       expect(new Serializer(instance, { exclude: ['baz'] }).toJSON()).to.equal(
         { foo: 'Coby' }
       );
-
-      done();
     });
   });
 });
