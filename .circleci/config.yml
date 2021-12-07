@@ -11,10 +11,9 @@ jobs:
 
     steps:
       - checkout
-      - npm-github-publish/github-login
       - run:
           name: NPM Install
-          command: npm install && rm -f .npmrc
+          command: npm install
       - run:
           name: NPM Test
           command: npm test
