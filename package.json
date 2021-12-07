@@ -1,5 +1,5 @@
 {
-  "name": "sequelize-serializer",
+  "name": "@saildrone/sequelize-serializer",
   "version": "3.0.0",
   "description": "An easy-to-use Serializer for Sequelize Models",
   "repository": {

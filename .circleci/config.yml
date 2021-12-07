@@ -1,0 +1,40 @@
+version: 2.1
+
+orbs:
+  npm-github-publish: saildrone/npm-github-publish@0.1
+
+jobs:
+  test:
+    working_directory: ~/app
+    docker:
+      - image: cimg/node:14.18.2
+
+    steps:
+      - checkout
+      - npm-github-publish/github-login
+      - run:
+          name: NPM Install
+          command: npm install && rm -f .npmrc
+      - run:
+          name: NPM Test
+          command: npm test
+
+workflows:
+  test_and_publish:
+    jobs:
+      - test:
+          context: platform-k8s
+          filters:
+            tags:
+              only: /.*/
+      - npm-github-publish/login-publish:
+          image: cimg/node:14.18.2
+          local_deps: "true"
+          requires:
+            - test
+          context: platform-k8s
+          filters:
+            tags:
+              only: /.*/
+            branches:
+              ignore: /.*/
