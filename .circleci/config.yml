@@ -28,7 +28,6 @@ workflows:
               only: /.*/
       - npm-github-publish/login-publish:
           image: cimg/node:14.18.2
-          local_deps: "true"
           requires:
             - test
           context: platform-k8s
