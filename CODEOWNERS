@@ -1,8 +1,0 @@
-* @Saildrone/sw-platform 
-.circleci/* @Saildrone/ti-platform 
-.github/* @Saildrone/ti-platform 
-/deploy @Saildrone/ti-platform 
-/lambda @Saildrone/ti-platform 
-/kubernetes @Saildrone/ti-platform 
-CODEOWNERS @Saildrone/leads 
-LICENSE @Saildrone/leads 
