@@ -1,7 +1,19 @@
 version: 2.1
 
 orbs:
-  npm-github-publish: saildrone/npm-github-publish@0.1
+  aws-cli: circleci/aws-cli@3.1.4
+  sd-helpers: saildrone/sd-helpers@0.0.23
+  npm-publish: saildrone/npm-publish@0.0.1
+
+# commands:
+#   install_prerequisites:
+#     steps:
+#       - run:
+#           name: "Install prerequisites"
+#           command: |
+#             apt-get -y update
+#             apt-get -y install curl
+#             apt-get -y install unzip
 
 jobs:
   test:
@@ -11,6 +23,10 @@ jobs:
 
     steps:
       - checkout
+      # - install_prerequisites
+      - aws-cli/install
+      - sd-helpers/get-aws-creds
+      - sd-helpers/codeartifact-login
       - run:
           name: NPM Install
           command: npm install
