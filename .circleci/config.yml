@@ -1,7 +1,7 @@
 version: 2.1
 
 orbs:
-  npm-publish: saildrone/npm-publish@0.0.2
+  npm-publish: saildrone/npm-publish@0
 
 jobs:
   test:
