@@ -62,6 +62,10 @@ return new Serializer(myModels);
 This package is built with TypeScript. To compile the source, run
 `npm run build`. To run the tests, run `npm test`.
 
+## sd_login
+
+This project is now using CodeArtifact repository to push and pull NPM packages. This requires AWS credentials to generate an AWS CodeArtifact authentication token, which is then used to login to CodeArtifact. For local development, you can retrieve the appropriate credentials and CODEARTIFACT_AUTH_TOKEN by adding the `sd_login` to your local machine: https://github.com/Saildrone/sd_login/blob/main/README.md
+
 ### Contributing
 
 Contributions would be rad! To make a contribution, please open an issue or

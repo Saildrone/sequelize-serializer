@@ -1,7 +1,7 @@
 version: 2.1
 
 orbs:
-  npm-github-publish: saildrone/npm-github-publish@0.1
+  npm-publish: saildrone/npm-publish@0
 
 jobs:
   test:
@@ -11,6 +11,7 @@ jobs:
 
     steps:
       - checkout
+      - npm-publish/npm-login
       - run:
           name: NPM Install
           command: npm install
