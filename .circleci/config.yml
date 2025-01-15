@@ -27,7 +27,7 @@ workflows:
           filters:
             tags:
               only: /.*/
-      - npm-github-publish/login-publish:
+      - npm-publish/login-publish:
           image: cimg/node:14.18.2
           requires:
             - test
