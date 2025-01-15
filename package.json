@@ -18,7 +18,7 @@
   "author": "Todd Bealmear <todd@saildrone.com>",
   "license": "MIT",
   "peerDependencies": {
-    "sequelize": "^5.18.4"
+    "sequelize": "^4.44.4"
   },
   "devDependencies": {
     "@hapi/code": "^6.0.0",
