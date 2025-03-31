@@ -30,7 +30,6 @@
     "sequelize": "^5.18.4",
     "sqlite3": "^5.0.2",
     "tslint": "^5.20.0",
-    "typescript": "^3.6.3"
-  },
-  "dependencies": {}
+    "typescript": "^5.8.2"
+  }
 }

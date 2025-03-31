@@ -28,7 +28,7 @@ export class Serializer<T extends SerializableInstance> {
     try {
       data = this.serializable.serializerAttributes();
     } catch (err) {
-      if (err.name === 'TypeError') {
+      if ((err as Error).name === 'TypeError') {
         return this.serializable.toJSON();
       }
 
