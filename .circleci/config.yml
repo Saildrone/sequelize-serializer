@@ -7,7 +7,7 @@ jobs:
   test:
     working_directory: ~/app
     docker:
-      - image: cimg/node:14.18.2
+      - image: cimg/node:22.14.0
 
     steps:
       - checkout
@@ -28,7 +28,7 @@ workflows:
             tags:
               only: /.*/
       - npm-publish/login-publish:
-          image: cimg/node:14.18.2
+          image: cimg/node:22.14.0
           requires:
             - test
           context: platform-k8s
