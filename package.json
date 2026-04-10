@@ -1,6 +1,6 @@
 {
   "name": "@saildrone/sequelize-serializer",
-  "version": "3.2.0",
+  "version": "3.2.1",
   "description": "An easy-to-use Serializer for Sequelize Models",
   "repository": {
     "type": "git",
@@ -18,14 +18,14 @@
   "author": "Todd Bealmear <todd@saildrone.com>",
   "license": "MIT",
   "peerDependencies": {
-    "sequelize": "^6.37.7"
+    "sequelize": "^6.37.8"
   },
   "devDependencies": {
     "@hapi/code": "^6.0.0",
     "@hapi/lab": "^20.4.0",
     "@types/hapi__code": "^5.3.0",
     "lab-transform-typescript": "^3.0.1",
-    "sequelize": "^6.37.7",
+    "sequelize": "^6.37.8",
     "sqlite3": "^5.1.7",
     "tslint": "^5.20.0",
     "typescript": "^5.8.2"
