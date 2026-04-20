@@ -22,7 +22,7 @@
   },
   "devDependencies": {
     "@hapi/code": "^6.0.0",
-    "@hapi/lab": "^20.4.0",
+    "@hapi/lab": "^26.0.0",
     "@types/hapi__code": "^5.3.0",
     "lab-transform-typescript": "^3.0.1",
     "sequelize": "^6.37.8",
